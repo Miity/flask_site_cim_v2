@@ -7,7 +7,7 @@ from models.image import Image, Gallery
 
 #new table
 def new_db():
-    import flask_site.utils.create_db as create_db
+    import flask_site.create_db as create_db
 
 def add_img_in_gallery():
     img1 = Image.query.get(1)
