@@ -1,0 +1,9 @@
+<!-- Gallery -->
+<div class="row">
+  {% for image in gallery.images %}
+  <div class="col-12 col-md-4">
+      {% include('user/media/image/static.html') %}
+  </div>
+  {% endfor %}
+</div>
+<!-- Gallery -->
