@@ -4,7 +4,6 @@ from models.page import Page
 from flask import render_template
 
 
-
 @app.route('/page/<slug>')
 def detail(slug):
     page = Page.query.where(Page.slug == slug).first()
