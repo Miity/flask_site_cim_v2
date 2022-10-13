@@ -1,3 +1,4 @@
+from . import *
 from flask_site.main import app
 
 
