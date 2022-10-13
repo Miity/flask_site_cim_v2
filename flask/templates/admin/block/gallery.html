@@ -1,0 +1,38 @@
+{% include('admin/block/nav.html') %}
+
+{% if gallery.images|length > 0 %}
+
+<a 
+    href="{{ url_for('admin.gallery_update', id=gallery.id ) }}"
+    class="btn btn-outline-secondary" 
+    target="popup" 
+>Update gallery</a>
+
+<div class="row">
+{% for image in gallery.images %}
+    {% if image.title != none %}
+        {% set image = image %}
+        <div class="col-12 col-md-4">
+            {% include('admin/image/single_image.html') %}
+        </div>
+    {% endif %}
+{% endfor %}
+</div>
+
+
+{% else %}
+
+<div class="m-3 border p-3 m-3">
+    <div class="mb-3">
+        <label for="gal_{{ gallery.id }}" class="form-label"  >Upload gallery</label>
+        <input class="form-control" type="file" id="gal_{{ gallery.id }}" multiple>
+    </div>
+    <button 
+        class="btn btn-outline-secondary" 
+        type="button" 
+        id="upload-button"
+        onclick="uploadFiles('gal_{{ gallery.id }}', {'type':'gallery','id' :'{{ gallery.id }}'})"
+    >Upload</button>
+</div>
+
+{% endif %}

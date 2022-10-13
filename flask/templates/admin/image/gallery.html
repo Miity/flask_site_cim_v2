@@ -1,0 +1,73 @@
+{% extends 'admin/base/base.html' %}
+{% block content %}
+
+<div class="row">
+
+    <div class="col-12 display-5 mb-2">Published</div>
+
+    <!-- add gallery -->
+    <div class="col-12 col-md-4 mb-5">
+        <a href="{{ url_for('admin.gallery_add')}}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus-square img-fluid" viewBox="0 0 16 16" width="100px" height="100px">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+        </a>
+    </div>
+
+    <!-- gallery list -->
+    {% for gallery in galleries %}
+    
+    <div class="col-12 col-md-4 mb-5 shadow-sm">
+        <div class="row">
+
+            <div class="col-6">
+                {% if gallery.images|length > 0 %}
+
+                <div class="row">
+                    <div class="col-12">
+                        <img src="{{ url_for('uploaded_image', id=gallery.images[0].id )}}" class="img-fluid">
+                    </div>
+                    {% for image in gallery.images if loop.index <= 4 %}
+                    
+                            {% if loop.first != true %}
+                            <div class="col-4">
+                                <img src="{{ url_for('uploaded_image', id=gallery.images[loop.index0].id )}}" class="img-fluid my-2">
+                            </div>
+                            {% endif %}
+
+                    {% endfor %}
+                </div>
+
+                {% endif %}
+            </div>
+
+            <div class="col-6 mb-3">
+
+                <div class="col-12">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Title: </b> {{ gallery.title }}</li>
+                    <li class="list-group-item"><b>id: </b> {{ gallery.id }}</li>
+                    <li class="list-group-item"><b>Num of foto: </b> {{ gallery.images|length }}</li>
+                    {% if gallery.images %}
+                    <li class="list-group-item"><b>Image folder: </b> {{ gallery.images[0].folder }}</li>
+                    {% endif %}
+                    <li class="list-group-item"></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 mt-4">
+                    <a href="{{ url_for('admin.gallery_update', id=gallery.id ) }}" class="btn btn-outline-primary">Update</a>
+                    <a href="{{ url_for('admin.gallery_delete', id=gallery.id ) }}" class="btn btn-outline-primary">Delete</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+</div>
+
+
+{% endblock %}
