@@ -1,0 +1,18 @@
+
+<div class="row p-2">
+    <div class="col-5">
+        <img
+            src="{{ url_for('uploaded_image', id = image.id) }}" 
+            alt="{{ image.alt }}" class="img-fluid">
+    </div>
+    <div class="col-7">
+
+        <ul class="list-group list-group-flush ">
+            <li class="list-group-item"><b>Title: </b>{{ image.title }}</li>
+            <li class="list-group-item"><b>Alt: </b>{{ image.alt }}</li>
+            <li class="list-group-item"><b>Id: </b>{{ image.id }}</li>
+            <li class="list-group-item"><b>Folder: </b>{{ image.folder }}</li>
+        </ul>
+
+    </div>
+</div>

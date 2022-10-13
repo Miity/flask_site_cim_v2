@@ -1,0 +1,51 @@
+{% extends 'admin/base/base.html' %}
+{% block content %}
+
+<main>
+  <div class="dropdown mb-3">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Add block
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" onclick="add_block('text', '{{page.id}}')">Text</a></li>
+      <li><a class="dropdown-item" onclick="add_block('image','{{page.id}}')">Photo</a></li>
+      <li><a class="dropdown-item" onclick="add_block('gallery', '{{page.id}}')">Gallery</a></li>
+    </ul>
+  </div>
+
+  <section id="main">
+  </section>
+
+</main>
+
+{% endblock %}
+
+
+{% block js %}
+<script src="{{url_for('static', filename='base/bootstrap/bootstrap.bundle.min.js')  }}"></script>
+<script src="{{url_for('static', filename='base/js/ckeditor/ckeditor.js')  }}"></script>
+
+<!-- text auto update CKeditor  -->
+<script src="{{ url_for('static', filename='admin/js/blocks/autoUpdateCK.js') }}"></script>
+<!-- Sortible system -->
+<script src="{{ url_for('static', filename='admin/js/blocks/sortible.js') }}"></script>
+
+<!-- Page Reload System -->
+<script src="{{ url_for('static', filename='admin/js/page/reload.js') }}"></script>
+<script>
+  var reload_page_info = () => {
+  for(i in CKEDITOR.instances)
+    {
+        CKEDITOR.instances[i].destroy(true);
+    }
+  load_page('main','/admin/load_page_info/{{page.id}}')}
+
+  reload_page_info()
+</script>
+
+<!-- block Update -->
+<script src="{{ url_for('static', filename='admin/js/blocks/block.js') }}"></script>
+<!-- Page Update System -->
+<script src="{{ url_for('static', filename='admin/js/page/update.js') }}"></script>
+
+{% endblock %}

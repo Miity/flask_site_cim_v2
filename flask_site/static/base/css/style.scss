@@ -1,0 +1,43 @@
+.list-img{
+  max-height: 100px;
+}
+
+.title{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.center{
+    text-align: center;
+}
+.justify{
+    text-align: justify;
+}
+
+
+a:link, a:visited {
+    color: grey;
+    text-align: center; 
+    text-decoration: none;
+  }
+  
+a:hover, a:active {
+    color:cadetblue;
+  }
+
+
+/* index */
+.header-image{
+  background-image: url(https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/Gaeta.jpg);
+  background-size: cover; 
+  background-position: center;
+}
+
+.header-cover{
+  min-height: 800px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.header-title{
+  color: aliceblue;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.64);
+}

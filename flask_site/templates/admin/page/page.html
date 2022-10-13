@@ -1,0 +1,41 @@
+{% extends 'admin/base/base.html' %}
+{% block content %}
+
+<main>
+    <div class="col btn-group mb-5">
+        <a class="btn btn-bg btn-outline-primary" href="{{ url_for('admin.page_add')}}" >Add new page</a>
+    </div>
+
+    <section id="main">
+
+    </section>
+
+</main>
+
+{% endblock %}
+
+
+
+
+{% block js %}
+<script>
+    let load_pages_info = () => {
+        const main = document.getElementById('main')
+        $.ajax({
+        type: "GET",
+        url: '/admin/load_pages_info',
+        success: function(data){
+          main.innerHTML = data['template']
+        },
+        error: function(error){
+              console.log("Error:");
+              console.log(error);
+        },
+        });
+    }
+    load_pages_info()
+</script>
+
+<!-- other Page Updates -->
+<script src="{{ url_for('static', filename='admin/js/page/update.js') }}"></script>
+{% endblock %}

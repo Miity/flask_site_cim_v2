@@ -1,0 +1,25 @@
+{% extends 'user/base/base.html' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+<section class="container pt-5">
+
+    <div class="row justify-content-center">
+        <h1 class='col-8 display-1 mb-3'>{{ page.title }}</h1>
+    </div>
+    
+    {% if page.blocks|length > 0 %}
+        {% for block in page.blocks %}
+        <div class="row mb-3 justify-content-center">
+            <div class='col-8'>
+                
+                {% include('user/block_logic.html') %}
+                
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+</section> 
+{% endblock %}

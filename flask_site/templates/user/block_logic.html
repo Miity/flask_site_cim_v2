@@ -1,0 +1,15 @@
+{% if block.type() == 'text' %}
+
+        {{ block.text.text | safe }}
+
+{% elif block.type() == 'gallery' %}
+
+        {% set gallery = block.gallery %}
+        {% include('user/media/gallery/static.html') %}
+
+{% elif block.type() == 'image' %}
+
+        {% set image = block.image %}
+        {% include('user/media/image/static.html') %}
+
+{% endif %}

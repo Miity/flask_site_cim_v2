@@ -1,0 +1,15 @@
+{% extends 'admin/base/base.html' %}
+{% block content %}
+
+<h1>Upload new File</h1>
+<form action="{{ url_for('admin.image_add') }}"  method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label for="alt" class="form-label">Alt</label>
+        <input type="text" name="alt" class="form-control" autofocus>
+    </div>
+    
+    <div class="mb-3"><input type="file" name="file" class="form-control" required></div>
+    <div class="mb-3"><input type="submit" class="btn btn-primary"></div>
+</form>
+{% endblock %}

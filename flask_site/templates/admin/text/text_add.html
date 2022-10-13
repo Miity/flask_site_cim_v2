@@ -1,0 +1,33 @@
+{% extends 'admin/base/base.html' %}
+{% block content %}
+
+
+<div class="col-12"><h1>Add text block</h1></div>
+<div class="col-12">
+    <textarea name="text_{{ text.id }}" > </textarea>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+<script src="{{url_for('static', filename='base/js/ckeditor/ckeditor.js')}}"></script>
+<script>
+    CKEDITOR.replace( 'text_{{ text.id }}' );
+    let ck = CKEDITOR.instances['text_{{ text.id }}']
+
+    ck.on('change', function() { 
+        let data = {'value':ck.getData(), 'id':'{{ text.id }}'}
+
+        $.ajax({
+            type: "POST",
+            url: '/admin/save_text_data',
+            data: JSON.stringify({'data':data}),
+            contentType: "application/json; charset=utf-8",
+            dataType:'json',
+            });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="it-IT">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='base/bootstrap/bootstrap.min.css') }}"> 
+    <script type="text/javascript" src="{{ url_for('static', filename='base/bootstrap/jquery-3.6.0.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='base/css/style.css') }}"> 
+
+    <META NAME="robots" CONTENT="noindex,nofollow">
+  </head>
+
+  <body>
+      <div class="container-fluid" style="min-height: 100vh">
+        <div class="row" style="min-height: 100vh">
+          {% block nav %}
+          <div class="col-12 col-md-3 pt-5 px-5" style="background-color: whitesmoke;">
+            {% include 'admin/base/nav.html' %}
+          </div>
+          {% endblock %}
+          
+          <div class="col-12 col-md-8 pt-5 px-5">
+            {% block content %}{% endblock %}
+          </div>
+        </div>        
+      </div>
+
+<js>
+      {% block js %}
+      {% endblock %}
+</js> 
+  </body>
+
+ 
+  
+</html>
