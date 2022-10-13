@@ -1,3 +1,4 @@
+from .path import *
 from app import db
 from models.page import Page
 from models.user import User

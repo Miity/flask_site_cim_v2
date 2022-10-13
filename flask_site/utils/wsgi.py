@@ -1,4 +1,4 @@
-from utils import *
+from .path import *
 from flask_site.main import app
 
 
