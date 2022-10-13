@@ -210,3 +210,5 @@ ENV/
 # mkdocs documentation
 /site
 
+# FLASK
+wsgi.py
