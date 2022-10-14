@@ -1,0 +1,7 @@
+
+{% include('admin/block/nav.html') %}
+<textarea name="{{ text.id }}" class="form-control">
+    {% if text.text != None %}
+        {{ text.text | safe }}
+    {% endif %}
+</textarea>
