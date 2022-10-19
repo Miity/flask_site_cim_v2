@@ -1,7 +1,7 @@
 from crypt import methods
-from app import db
-from admin import admin
-from models.text import Text
+from application.app import db
+from application.admin import admin
+from application.models.text import Text
 from flask import render_template, request, redirect, url_for
 
 

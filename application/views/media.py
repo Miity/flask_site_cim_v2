@@ -1,6 +1,6 @@
 import os
-from app import db, app
-from models.image import Image, Gallery
+from application.app import db, app
+from application.models.image import Image, Gallery
 from werkzeug.utils import secure_filename
 from flask import send_from_directory, request
 

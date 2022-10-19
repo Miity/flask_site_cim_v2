@@ -1,10 +1,10 @@
-from blocks import block
-from app import db
-from models.block import Block
+from application.blocks import block
+from application.app import db
+from application.models.block import Block
 from flask import request, render_template, jsonify
-from models.text import Text
-from models.image import Image, Gallery
-from models.page import Page
+from application.models.text import Text
+from application.models.image import Image, Gallery
+from application.models.page import Page
 import json
 
 

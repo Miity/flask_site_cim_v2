@@ -1,5 +1,5 @@
-from app import db
-from models.base import TimestampMixin
+from application.app import db
+from application.models.base import TimestampMixin
 
 
 class User(db.Model, TimestampMixin):

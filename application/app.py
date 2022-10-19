@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from config import Configuration
+from .config import Configuration
 
 
 app = Flask(__name__)
@@ -8,17 +8,15 @@ app.config.from_object(Configuration)
 db = SQLAlchemy(app)
 
 
-from blocks import block
-from admin import admin
+from .blocks import block
+from .admin import admin
 app.register_blueprint(block, url_prefix='/block')
 app.register_blueprint(admin, url_prefix='/admin')
 
 
-
 ################ VIEW
 from flask import render_template
-from models.image import Gallery
-
+from .models.image import Gallery
 
 
 @app.route('/')

@@ -1,12 +1,12 @@
-from app import db
-from models.image import Gallery, Image
-from admin import admin
+from application.app import db
+from application.models.image import Gallery, Image
+from application.admin import admin
 from flask import render_template, request, redirect, flash, url_for
 from werkzeug.utils import secure_filename
-from models.image import gallery_images
+from application.models.image import gallery_images
 from sqlalchemy import update
 
-from views.media import new_image, new_gallery
+from application.views.media import new_image, new_gallery
 
 
 # --------------    GAllERY and Image index pages    -----------------

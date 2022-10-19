@@ -1,5 +1,5 @@
-from app import db
-from models.block import Block
+from application.app import db
+from application.models.block import Block
 
 
 class Page(db.Model):

@@ -1,6 +1,6 @@
 from crypt import methods
-from app import app, page_not_found
-from models.page import Page
+from application.app import app, page_not_found
+from application.models.page import Page
 from flask import render_template
 
 

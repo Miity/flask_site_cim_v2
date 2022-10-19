@@ -1,6 +1,6 @@
-from app import app, db
+from application.app import app, db
 
-import views.page
+import application.views.page
 
 if __name__ == "__main__":
     app.run()
