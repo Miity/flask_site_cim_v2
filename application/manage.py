@@ -1,4 +1,4 @@
-from .app import db
+from application.app import db
 
 
 def drop_creat_db(db):
