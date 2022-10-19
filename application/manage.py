@@ -1,4 +1,13 @@
 from app import db
-from utils.create_db import drop_creat_db
 
+
+def drop_creat_db(db):
+    from models.page import Page
+    from models.user import User
+    from models.block import Block
+    from models.image import Image, Gallery
+    from models.text import Text
+    db.drop_all()
+    db.create_all()
+    
 drop_creat_db(db)

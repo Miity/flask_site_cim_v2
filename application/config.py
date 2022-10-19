@@ -4,7 +4,7 @@ PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 class Configuration(object):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite+pysqlite:///test.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite+pysqlite:///data/test.db'
     SECRET_KEY = 'qazzaq'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
