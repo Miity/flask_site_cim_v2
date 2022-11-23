@@ -23,10 +23,10 @@ class Image(db.Model, TimestampMixin):
     __tablename__ = 'image'
 
     id = db.Column(db.Integer, primary_key=True)
-    folder = db.Column(db.String(80), nullable=True, default='default')
-    title = db.Column(db.String(80), nullable=True)
-    alt = db.Column(db.String(80), default='none')
-    archive = db.Column(db.Boolean)
+    folder:str = db.Column(db.String(80), nullable=True, default='default')
+    title:str = db.Column(db.String(80), nullable=True)
+    alt:str = db.Column(db.String(80), default='none')
+    archive:bool = db.Column(db.Boolean)
     
     blocks = db.relationship('Block', back_populates='image', cascade="all,delete")
 
@@ -38,7 +38,10 @@ class Image(db.Model, TimestampMixin):
         super(Image, self).__init__(**kwargs)
 
     def upload_path(self):
-        return os.path.join(app.config['UPLOAD_FOLDER'], self.folder, self.title)
+        path_to_dir = os.path.join(app.config['UPLOAD_FOLDER'], self.folder)
+        if not os.path.exists(path_to_dir):
+            os.makedirs(path_to_dir)
+        return os.path.join(path_to_dir, self.title)
 
     def update(self, new_file = None, data = None):
         if new_file:
@@ -51,7 +54,7 @@ class Image(db.Model, TimestampMixin):
         db.session.commit()
 
     def delete(self):
-        os.system("rm " + self.path_to_file())
+        os.system("rm " + self.upload_path())
         db.session.delete(self)
         db.session.commit()
     

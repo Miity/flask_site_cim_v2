@@ -2,7 +2,7 @@
 <div class="row p-2">
     <div class="col-5">
         <img
-            src="{{ url_for('uploaded_image', id = image.id) }}" 
+            src="{{ url_for('get_image', id = image.id, title=image.title) }}" 
             alt="{{ image.alt }}" class="img-fluid">
     </div>
     <div class="col-7">
@@ -12,7 +12,9 @@
             <li class="list-group-item"><b>Alt: </b>{{ image.alt }}</li>
             <li class="list-group-item"><b>Id: </b>{{ image.id }}</li>
             <li class="list-group-item"><b>Folder: </b>{{ image.folder }}</li>
+            <button type="button" class="btn btn-danger" onclick="delete_obj('{{image.id}}')">delete</button>
         </ul>
 
     </div>
 </div>
+

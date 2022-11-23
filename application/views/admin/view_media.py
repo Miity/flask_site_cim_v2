@@ -5,8 +5,8 @@ from flask import render_template, request, redirect, flash, url_for
 from werkzeug.utils import secure_filename
 from application.models.image import gallery_images
 from sqlalchemy import update
-
 from application.views.media import new_image, new_gallery
+import json
 
 
 # --------------    GAllERY and Image index pages    -----------------
@@ -31,34 +31,44 @@ def gallery_add():
         return redirect('/admin/gallery')
     return render_template('admin/image/gallery_add.html')
 
-
-@admin.route('/image_add', methods=['get','post'])
+@admin.route('/image_add', methods=['post', 'get'])
 def image_add():
     if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
         file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        
         if request.form['alt']:
             alt = request.form['alt']
         else:
             alt = file.filename.strip('.')[0]
         new_image(file, alt)
 
-        return redirect('/admin/image')
+        return redirect(url_for('admin.image_admin'))
     return render_template('admin/image/image_add.html')
 
 
-@admin.route('/gal_delete/<int:id>')
-def gallery_delete(id):
-    gal = Gallery.query.get(id)
-    gal.delete()
-    flash('Gallery was deleted')
-    return redirect(url_for('admin.gallery_admin'))
+def del_obj(Cls):
+    if request.method == 'DELETE':
+        id = json.loads(request.get_json())['id']
+        obj = Cls.query.get(id)
+        obj.delete()
+        flash('Object was deleted')
 
-@admin.route('/img_delete/<int:id>')
-def image_delete(id):
-    img = Image.query.get(id)
-    img.delete()
-    flash('Image was deleted')
-    return redirect(url_for('admin.image_admin'))
+@admin.route('/gal/delete', methods=['DELETE'])
+def gallery_delete():
+    del_obj(Gallery)
+    return '',200
+
+@admin.route('/img/delete', methods=['DELETE'])
+def image_delete():
+    del_obj(Image)
+    return '',200
+
 
 
 # --------------    GALLERY UPDATE    -----------------

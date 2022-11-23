@@ -16,6 +16,7 @@
   </head>
 
   <body>
+    {% include 'admin/base/flash.html' %}
       <div class="container-fluid" style="min-height: 100vh">
         <div class="row" style="min-height: 100vh">
           {% block nav %}
@@ -34,6 +35,7 @@
       {% block js %}
       {% endblock %}
 </js> 
+
   </body>
 
  
