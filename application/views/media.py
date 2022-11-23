@@ -1,5 +1,5 @@
 import os
-from application.app import db, app
+from application import db, app
 from application.models.image import Image, Gallery
 from werkzeug.utils import secure_filename
 from flask import send_from_directory, request
@@ -41,3 +41,4 @@ def new_gallery(title, files):
     db.session.add(gal)
     db.session.commit()
     return gal
+    

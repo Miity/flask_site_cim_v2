@@ -1,5 +1,5 @@
-from application.blocks import block
-from application.app import db
+from application.blueprints.blocks import block
+from application import db
 from application.models.block import Block
 from flask import request, render_template, jsonify
 from application.models.text import Text

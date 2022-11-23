@@ -1,6 +1,6 @@
-from application.app import db
+from application import db
 from application.models.image import Gallery, Image
-from application.admin import admin
+from application.blueprints.admin import admin
 from flask import render_template, request, redirect, flash, url_for
 from werkzeug.utils import secure_filename
 from application.models.image import gallery_images

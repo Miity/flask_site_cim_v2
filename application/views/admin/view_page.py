@@ -1,7 +1,7 @@
 from crypt import methods
-from application.app import db
+from application import db
 from application.models.page import Page
-from application.admin import admin
+from application.blueprints.admin import admin
 from flask import render_template, request
 from slugify import slugify
 

@@ -1,4 +1,4 @@
-from application.app import db
+from application import db
 from application.models.block import Block
 
 

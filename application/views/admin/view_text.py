@@ -1,6 +1,6 @@
 from crypt import methods
-from application.app import db
-from application.admin import admin
+from application import db
+from application.blueprints.admin import admin
 from application.models.text import Text
 from flask import render_template, request, redirect, url_for
 

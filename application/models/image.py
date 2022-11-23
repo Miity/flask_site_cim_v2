@@ -1,8 +1,8 @@
 import os
-from application.app import db, app
+from application import db, app
 from application.models.base import TimestampMixin
 from werkzeug.utils import secure_filename
-from flask import send_from_directory
+
 
 gallery_images = db.Table('gallery_images',
         db.Model.metadata,
