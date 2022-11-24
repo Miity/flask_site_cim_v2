@@ -6,7 +6,7 @@ from flask import send_from_directory, request
 
 
 @app.route('/img/<path:dir>/<path:title>/<int:id>', methods=['GET']) 
-def get_image(id,title):
+def get_image(id,title,dir):
     image:Image = Image.query.get(id)
     return send_from_directory(app.config['UPLOAD_FOLDER'], os.path.join(image.folder,image.title))
 
