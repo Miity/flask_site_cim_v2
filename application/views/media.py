@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 from flask import send_from_directory, request
 
 
-@app.route('/img/<int:id>_<path:title>', methods=['GET']) 
+@app.route('/img/<path:dir>/<path:title>/<int:id>', methods=['GET']) 
 def get_image(id,title):
     image:Image = Image.query.get(id)
     return send_from_directory(app.config['UPLOAD_FOLDER'], os.path.join(image.folder,image.title))
