@@ -9,7 +9,7 @@
     <div class="row">
         {% for image in gallery.images %}
         <div class="col-4 my-3">
-            <img src="{{ url_for('uploaded_image', id=image.id) }}" alt="{{ image.alt }}" class="image-fluid img-thumbnail">
+            <img src="{{ url_for('get_image', id = image.id, title=image.title, dir=image.folder) }}" alt="{{ image.alt }}" class="image-fluid img-thumbnail">
         </div>
         {% endfor %}
     </div>
